@@ -1,0 +1,6 @@
+{
+  "name": "Perceptle Collection",
+  "description": "A multi-series perceptual puzzle collection testing spatial instinct, color acuity, and time proportion across 15 calibrated mini-games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
