@@ -73,6 +73,7 @@ export default function App() {
   });
 
   const [mode, setMode] = useState<GameMode>('daily');
+  const [activeRunMode, setActiveRunMode] = useState<GameMode>('daily');
   const [view, setView] = useState<AppView>('hub');
   const [activeSeries, setActiveSeries] = useState<SeriesDef | null>(null);
   const [activeSeed, setActiveSeed] = useState<string>('');
@@ -124,6 +125,7 @@ export default function App() {
 
       setActiveChallengeContext(null);
       setIncomingChallenge(null);
+      setActiveRunMode(effectiveMode);
       setActiveSeries(resolvedSeries);
       setActiveSeed(seed);
       setSummaryRounds([]);
@@ -195,6 +197,7 @@ export default function App() {
         context.payload.challengerName
       );
       setActiveChallengeContext(context);
+      setActiveRunMode('practice');
       setActiveSeries(challengeSeries);
       setActiveSeed(context.payload.seed);
       setSummaryRounds([]);
@@ -212,7 +215,7 @@ export default function App() {
         activeSeries.id === 'custom-mix' ||
         activeSeries.id === 'friend-challenge'
           ? 'practice'
-          : mode;
+          : activeRunMode;
 
       setPersisted((prev) => {
         const { nextState, newlyUnlockedBadges } = recordRunCompletion(prev, {
@@ -230,12 +233,13 @@ export default function App() {
       setView('summary');
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
     },
-    [activeSeries, dateStr, mode]
+    [activeSeries, activeRunMode, dateStr]
   );
 
   const handleViewCompletedSummary = useCallback(
     (series: SeriesDef, record: DailyCompletionRecord) => {
       setActiveChallengeContext(null);
+      setActiveRunMode('daily');
       setActiveSeries(series);
       setActiveSeed(makeDailySeed(record.date, series.id));
       setSummaryRounds(record.rounds);
@@ -326,7 +330,7 @@ export default function App() {
           activeSeries.id === 'custom-mix' ||
           activeSeries.id === 'friend-challenge'
             ? 'practice'
-            : mode
+            : activeRunMode
         }
         muted={persisted.muted}
         theme={persisted.theme}
@@ -345,7 +349,7 @@ export default function App() {
           activeSeries.id === 'custom-mix' ||
           activeSeries.id === 'friend-challenge'
             ? 'practice'
-            : mode
+            : activeRunMode
         }
         dateStr={dateStr}
         nextSeries={nextSeries}
@@ -366,7 +370,7 @@ export default function App() {
         onModeChange={setMode}
         onToggleMute={handleToggleMute}
         onToggleTheme={handleToggleTheme}
-        onStartSeries={(series) => startSeries(series)}
+        onStartSeries={(series, overrideMode) => startSeries(series, overrideMode)}
         onViewCompletedSummary={handleViewCompletedSummary}
         onOpenCustomMix={() => setCustomMixOpen(true)}
         onOpenChallengeBuilder={handleOpenHubChallengeBuilder}

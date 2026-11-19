@@ -12,6 +12,8 @@ interface DotPoint {
   r: number;
 }
 
+const FLASH_DURATION_MS = 2100;
+
 export function FlashCount({ seed, onComplete }: MiniGameProps) {
   const { targetCount, dots } = useMemo(() => {
     const rng = createRng(seed);
@@ -37,14 +39,33 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
   const [guess, setGuess] = useState<number>(20);
   const [score, setScore] = useState<number | null>(null);
   const timersRef = useRef<number[]>([]);
+  const flashBarRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const t1 = window.setTimeout(() => {
       setPhase('flash');
       soundEngine.playTap();
+      const flashStart = performance.now();
+
+      const animateBar = (now: number) => {
+        const remaining = Math.max(0, 1 - (now - flashStart) / FLASH_DURATION_MS);
+        if (flashBarRef.current) {
+          flashBarRef.current.style.transform = `scaleX(${remaining})`;
+        }
+        if (remaining > 0) {
+          rafRef.current = window.requestAnimationFrame(animateBar);
+        }
+      };
+      rafRef.current = window.requestAnimationFrame(animateBar);
+
       const t2 = window.setTimeout(() => {
+        if (rafRef.current !== null) {
+          window.cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
         setPhase('input');
-      }, 600);
+      }, FLASH_DURATION_MS);
       timersRef.current.push(t2);
     }, 650);
     timersRef.current.push(t1);
@@ -52,6 +73,10 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
     return () => {
       timersRef.current.forEach((id) => window.clearTimeout(id));
       timersRef.current = [];
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
     };
   }, []);
 
@@ -97,19 +122,20 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
       <div className="text-center space-y-1">
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
           {phase === 'ready'
-            ? 'Focus on the field — dots flash for 0.6s'
+            ? 'Focus on the field — dots flash for 2.1s'
             : phase === 'flash'
-              ? 'Count the dots!'
+              ? 'Count the dots! (2.1s)'
               : phase === 'input'
                 ? 'How many dots did you see?'
                 : `Exact count: ${targetCount} dots`}
         </p>
       </div>
 
-      <div className="w-full bg-white dark:bg-[#111827] rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 select-none">
+      <div className="w-full bg-white dark:bg-[#111827] rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 select-none space-y-3">
         <svg
           viewBox="0 0 320 240"
           data-testid="flash-count-field"
+          data-phase={phase}
           className="w-full h-auto max-h-[250px] rounded-xl bg-[#FAFAFA] dark:bg-[#0B0F17] border border-neutral-100 dark:border-neutral-800"
         >
           {phase === 'ready' && (
@@ -168,6 +194,16 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
               </g>
             ))}
         </svg>
+
+        {phase === 'flash' && (
+          <div className="w-full h-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+            <div
+              ref={flashBarRef}
+              className="w-full h-full bg-indigo-600 dark:bg-indigo-400 origin-left"
+              style={{ transform: 'scaleX(1)' }}
+            />
+          </div>
+        )}
       </div>
 
       {phase === 'input' && (

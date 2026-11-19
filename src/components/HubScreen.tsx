@@ -39,7 +39,7 @@ interface HubScreenProps {
   onModeChange: (mode: GameMode) => void;
   onToggleMute: () => void;
   onToggleTheme: () => void;
-  onStartSeries: (series: SeriesDef) => void;
+  onStartSeries: (series: SeriesDef, overrideMode?: GameMode) => void;
   onViewCompletedSummary: (series: SeriesDef, record: DailyCompletionRecord) => void;
   onOpenCustomMix: () => void;
   onOpenChallengeBuilder: () => void;
@@ -295,7 +295,8 @@ export function HubScreen({
                     onClick={() => {
                       soundEngine.unlock();
                       soundEngine.playTap();
-                      onStartSeries(series);
+                      // First daily run uses today's seeded targets; replays automatically roll fresh targets
+                      onStartSeries(series, isDailyCompleted ? 'practice' : undefined);
                     }}
                     className="flex-1 min-h-[46px] px-4 rounded-xl text-sm font-semibold text-white inline-flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer whitespace-nowrap"
                     style={{ backgroundColor: series.accentColor }}
@@ -304,7 +305,7 @@ export function HubScreen({
                       {mode === 'practice'
                         ? `Practice ${series.numberLabel}`
                         : isDailyCompleted
-                          ? 'Replay Today'
+                          ? 'Play Again'
                           : 'Play Now'}
                     </span>
                     <ArrowRight className="w-4 h-4" />

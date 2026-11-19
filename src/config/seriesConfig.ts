@@ -47,7 +47,7 @@ export const SERIES_CONFIG: readonly SeriesDef[] = [
       {
         id: 's1-flash-count',
         name: 'Flash Count',
-        shortDesc: 'Estimate a 0.6s flash of scattered dots.',
+        shortDesc: 'Estimate a 2.1s flash of scattered dots.',
         seriesId: 'series-1',
         component: FlashCount,
       },
@@ -61,7 +61,7 @@ export const SERIES_CONFIG: readonly SeriesDef[] = [
       {
         id: 's1-steady-beat',
         name: 'Steady Beat',
-        shortDesc: 'Keep an internal metronome across 4 silent beats.',
+        shortDesc: 'Hear 2 bars of tempo, then tap 4 silent beats.',
         seriesId: 'series-1',
         component: SteadyBeat,
       },
@@ -108,7 +108,7 @@ export const SERIES_CONFIG: readonly SeriesDef[] = [
       {
         id: 's2-alignment-level',
         name: 'Alignment Level',
-        shortDesc: 'Fine-tune a tilted line to exactly 0.0° level.',
+        shortDesc: 'Align a tilted bar to a target axis or parallel reference.',
         seriesId: 'series-2',
         component: AlignmentLevel,
       },
@@ -148,7 +148,7 @@ export const SERIES_CONFIG: readonly SeriesDef[] = [
       {
         id: 's3-grid-density',
         name: 'Grid Density',
-        shortDesc: 'Shade a target percentage of a 10×10 grid blindly.',
+        shortDesc: 'Paint a scattered 12×12 grid to a target density in 10s.',
         seriesId: 'series-3',
         component: GridDensity,
       },

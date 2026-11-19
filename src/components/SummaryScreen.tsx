@@ -353,20 +353,7 @@ export function SummaryScreen({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {mode === 'practice' && !activeChallenge ? (
-              <button
-                type="button"
-                onClick={() => {
-                  soundEngine.playTap();
-                  onReplayPractice();
-                }}
-                className="min-h-[44px] rounded-xl text-white font-semibold text-sm inline-flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-[0.99]"
-                style={{ backgroundColor: series.accentColor }}
-              >
-                <RotateCcw className="w-4 h-4" />
-                <span>Play New Practice Seed</span>
-              </button>
-            ) : nextSeries && !activeChallenge ? (
+            {!activeChallenge && nextSeries && mode === 'daily' ? (
               <button
                 type="button"
                 onClick={() => {
@@ -381,6 +368,30 @@ export function SummaryScreen({
               </button>
             ) : null}
 
+            {!activeChallenge && (
+              <button
+                type="button"
+                data-testid="summary-replay-new-btn"
+                onClick={() => {
+                  soundEngine.playTap();
+                  onReplayPractice();
+                }}
+                className={`${
+                  nextSeries && mode === 'daily'
+                    ? 'border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-[#111827] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white'
+                    : 'text-white'
+                } min-h-[44px] rounded-xl font-semibold text-sm inline-flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-[0.99]`}
+                style={
+                  nextSeries && mode === 'daily'
+                    ? undefined
+                    : { backgroundColor: series.accentColor }
+                }
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>Play Again (New Targets)</span>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => {
@@ -388,8 +399,7 @@ export function SummaryScreen({
                 onBackToHub();
               }}
               className={`${
-                (mode === 'practice' && !activeChallenge) ||
-                (nextSeries && !activeChallenge)
+                !activeChallenge && (!nextSeries || mode !== 'daily')
                   ? ''
                   : 'sm:col-span-2'
               } min-h-[44px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111827] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-medium text-sm inline-flex items-center justify-center gap-2 transition-colors cursor-pointer`}
