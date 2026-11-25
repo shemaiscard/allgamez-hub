@@ -94,7 +94,7 @@ export function getRuleCopy(rule: ChallengeEditRule): {
         label: 'Exact 5 Games',
         shortLabel: 'Locked',
         senderDescription: 'Friend plays your exact 5 games head-to-head.',
-        recipientBanner: 'Locked lineup — play these exact 5 games head-to-head.',
+        recipientBanner: 'Locked lineup: play these exact 5 games head-to-head.',
       };
     case 'swap1':
       return {
@@ -108,7 +108,7 @@ export function getRuleCopy(rule: ChallengeEditRule): {
         label: 'Edit Any / All 5',
         shortLabel: 'Full Remix Allowed',
         senderDescription: 'Friend can swap any game or replace the entire 5-game lineup.',
-        recipientBanner: 'Full remix enabled — swap any game or replace the entire lineup.',
+        recipientBanner: 'Full remix enabled: swap any game or replace the entire lineup.',
       };
   }
 }

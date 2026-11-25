@@ -139,9 +139,9 @@ export function SteadyBeat({ seed, onComplete }: MiniGameProps) {
       <div className="text-center space-y-1">
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
           {phase === 'listening'
-            ? 'Listen & watch — metronome plays 2 bars (8 beats)...'
+            ? 'Listen & watch: metronome plays 2 bars (8 beats)...'
             : phase === 'tapping'
-              ? 'Metronome muted — tap the next 4 beats on time'
+              ? 'Metronome muted: tap the next 4 beats on time'
               : 'Rhythm accuracy revealed'}
         </p>
         <div className="font-mono text-2xl font-bold tabular-nums text-neutral-900 dark:text-white">

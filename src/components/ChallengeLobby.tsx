@@ -176,7 +176,7 @@ export function ChallengeLobby({
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               {challengerAvg !== null
                 ? 'Play the exact same seeded targets to compare head-to-head.'
-                : 'Open duel — complete all 5 rounds and send your score back.'}
+                : 'Open duel: complete all 5 rounds and send your score back.'}
             </p>
           </div>
 
@@ -302,7 +302,7 @@ export function ChallengeLobby({
                       </div>
                       <p className="mt-0.5 pl-6 text-xs text-neutral-500 dark:text-neutral-400">
                         {isSwapped && originalGame
-                          ? `Replaced ${originalGame.name} — send back after playing so ${payload.challengerName} tries this too.`
+                          ? `Replaced ${originalGame.name}: send back after playing so ${payload.challengerName} tries this too.`
                           : game?.shortDesc}
                       </p>
                     </div>

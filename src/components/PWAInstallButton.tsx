@@ -89,7 +89,7 @@ export function PWAInstallButton() {
                   </strong>
                   .
                 </li>
-                <li>Launch Gamez anytime — even completely offline.</li>
+                <li>Launch Gamez anytime, even completely offline.</li>
               </ol>
               <button
                 type="button"

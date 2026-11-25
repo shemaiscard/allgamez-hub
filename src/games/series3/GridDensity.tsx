@@ -7,7 +7,7 @@ import { soundEngine } from '../../utils/audio';
 import { GhostRevealBar } from '../../components/GhostRevealBar';
 
 const GRID_SIDE = 12;
-const TOTAL_CELLS = GRID_SIDE * GRID_SIDE; // 144 cells — breaks 10x10 row-counting shortcuts
+const TOTAL_CELLS = GRID_SIDE * GRID_SIDE; // 144 cells: breaks 10x10 row-counting shortcuts
 const MAX_TIME_SEC = 10;
 
 export function GridDensity({ seed, onComplete }: MiniGameProps) {

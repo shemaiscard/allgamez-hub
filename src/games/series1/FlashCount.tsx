@@ -122,7 +122,7 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
       <div className="text-center space-y-1">
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
           {phase === 'ready'
-            ? 'Focus on the field — dots flash for 2.1s'
+            ? 'Focus on the field: dots flash for 2.1s'
             : phase === 'flash'
               ? 'Count the dots! (2.1s)'
               : phase === 'input'
@@ -167,7 +167,7 @@ export function FlashCount({ seed, onComplete }: MiniGameProps) {
               textAnchor="middle"
               className="fill-neutral-300 dark:fill-neutral-600 text-sm font-mono"
             >
-              Hidden — Enter your estimate
+              Hidden. Enter your estimate
             </text>
           )}
 

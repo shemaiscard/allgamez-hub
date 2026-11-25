@@ -200,7 +200,7 @@ export function HubScreen({
             <h2 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white text-balance">
               {mode === 'daily'
                 ? 'Today’s Calibrated Perceptual Series'
-                : 'Endless Practice — Randomized Targets'}
+                : 'Endless Practice: Randomized Targets'}
             </h2>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               {mode === 'daily'
@@ -404,7 +404,7 @@ export function HubScreen({
                 Calibration Milestones
               </h3>
               <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
-                Saved locally on your device — works fully offline.
+                Saved locally on your device and works fully offline.
               </p>
             </div>
             <button

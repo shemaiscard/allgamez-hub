@@ -134,8 +134,8 @@ export function SummaryScreen({
                     : h2h.verdict === 'tie'
                       ? `Dead heat with ${h2h.challengerName}!`
                       : h2h.verdict === 'remixed'
-                        ? `Full remix complete — send it back to ${h2h.challengerName}!`
-                        : `Score set — send back to ${h2h.challengerName}!`}
+                        ? `Full remix complete: send it back to ${h2h.challengerName}!`
+                        : `Score set: send back to ${h2h.challengerName}!`}
               </h2>
               {h2h.hasChallengerScores && h2h.matchedCount > 0 && (
                 <p className="text-xs text-neutral-600 dark:text-neutral-300">
@@ -215,9 +215,9 @@ export function SummaryScreen({
             </span>
             {newlyUnlockedBadges.map((b) => (
               <span key={b.id} className="font-medium text-neutral-800 dark:text-neutral-200">
-                {b.title}{' '}
+                {b.title}:{' '}
                 <span className="text-neutral-500 dark:text-neutral-400 font-normal">
-                  — {b.description}
+                  {b.description}
                 </span>
               </span>
             ))}

@@ -88,7 +88,7 @@ export function BlindStopwatch({ seed, onComplete }: MiniGameProps) {
                 •••
               </div>
               <div className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                Timer running — count internally
+                Timer running: count internally
               </div>
             </div>
           )}
