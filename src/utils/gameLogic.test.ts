@@ -160,7 +160,7 @@ test('share text formatting and streak/badge persistence', () => {
     mode: 'daily',
     rounds,
   });
-  assert.equal(share, 'Gamez Series 2 • 2026-11-19 • Score: 89/100 (A) 🟩🟨🟩🟩🟦');
+  assert.equal(share, 'AllGamez Hub Series 2 • 2026-11-19 • Score: 89/100 (A) 🟩🟨🟩🟩🟦');
 
   // Streak computation
   assert.equal(

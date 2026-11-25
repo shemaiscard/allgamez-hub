@@ -1,6 +1,6 @@
 # AllGamez Hub
 
-Gamez is a collection of 15 perceptual mini-games that test how well you judge angles, colors, areas, tempo and time without a ruler or a clock. Each round gives a score out of 100, and a run of five rounds ends with a letter rank you can share.
+AllGamez Hub is a collection of 15 perceptual mini-games that test how well you judge angles, colors, areas, tempo and time without a ruler or a clock. Each round gives a score out of 100, and a run of five rounds ends with a letter rank you can share.
 
 **Play it:** [alwaysgame.netlify.app](https://alwaysgame.netlify.app)
 

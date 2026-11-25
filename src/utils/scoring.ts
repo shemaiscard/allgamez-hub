@@ -96,7 +96,7 @@ export function formatShareText(params: {
       ? params.seriesNumberLabel
       : params.seriesTitle;
   const dateTag = params.mode === 'daily' ? params.dateStr : 'Practice';
-  return `Gamez ${label} • ${dateTag} • Score: ${avg}/100 (${rank}) ${emojis}`;
+  return `AllGamez Hub ${label} • ${dateTag} • Score: ${avg}/100 (${rank}) ${emojis}`;
 }
 
 /* ============================================================================

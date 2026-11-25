@@ -20,8 +20,8 @@ export default defineConfig(() => {
         ],
         manifest: {
           id: '/',
-          name: 'Gamez: Perceptual Puzzles',
-          short_name: 'Gamez',
+          name: 'AllGamez Hub: Perceptual Puzzles',
+          short_name: 'AllGamez Hub',
           description:
             'Multi-series perceptual puzzle collection testing spatial instinct, color acuity, and time proportion across 15 calibrated mini-games.',
           theme_color: '#111827',

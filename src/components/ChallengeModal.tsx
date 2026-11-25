@@ -134,11 +134,11 @@ export function ChallengeModal({
         : null;
     try {
       await navigator.share({
-        title: `Gamez Challenge from ${sanitizeChallengerName(playerName)}`,
+        title: `AllGamez Hub Challenge from ${sanitizeChallengerName(playerName)}`,
         text:
           avg !== null
-            ? `I scored ${avg}/100 on Gamez (${label}). Think you can beat me?`
-            : `Try my 5-round Gamez perceptual challenge!`,
+            ? `I scored ${avg}/100 on AllGamez Hub (${label}). Think you can beat me?`
+            : `Try my 5-round AllGamez Hub perceptual challenge!`,
         url: challengeUrl,
       });
     } catch {

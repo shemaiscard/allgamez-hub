@@ -110,7 +110,7 @@ export function HubScreen({
             <CalibrationEmblem className="w-10 h-10 shrink-0" />
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none">
-                Gamez
+                AllGamez Hub
               </h1>
               <div className="mt-1 flex items-center gap-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
                 <span>{formatDisplayDate(dateStr)}</span>

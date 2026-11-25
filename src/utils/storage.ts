@@ -13,7 +13,7 @@ export const BADGE_DEFINITIONS: readonly BadgeDef[] = [
   {
     id: 'first-calibration',
     title: 'First Calibration',
-    description: 'Complete your first 5-round Gamez series.',
+    description: 'Complete your first 5-round AllGamez Hub series.',
   },
   {
     id: 's-rank-round',
